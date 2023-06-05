@@ -1,7 +1,16 @@
 # React homework template
 
-Этот проект был создан при помощи
-[Create React App](https://github.com/facebook/create-react-app). Для знакомства
+This project bild with
+[Create React App](https://github.com/facebook/create-react-app).
+
+Used libs:
+
+"modern-normalize": "^2.0.0",
+"nanoid": "^4.0.2",
+"styled-components": "^5.3.11",
+
+
+ Для знакомства
 и настройки дополнительных возможностей
 [обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).
 
