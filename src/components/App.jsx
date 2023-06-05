@@ -28,6 +28,7 @@ export class App extends Component {
     if (prevState.contacts.length !== contacts.length) {
       lStor.save(LSKEY, contacts);
     }
+    !contacts.length && lStor.remove(LSKEY);
   }
 
   handleInputChange = evt => {
