@@ -5,17 +5,30 @@ import { Title, ContainerCSS } from './MainContainerCSS';
 import { Form } from './Form/Form';
 import { Filter } from './Filter/Filter';
 import { ContactsList } from './ContactsList/ContactsList';
+import LStorage from './storage';
+
+const lStor = new LStorage();
+const LSKEY = 'phonebook';
 
 export class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    if (lStor.load(LSKEY)) {
+      const contacts = lStor.load(LSKEY);
+      this.setState({ contacts });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { contacts } = this.state;
+    if (prevState.contacts.length !== contacts.length) {
+      lStor.save(LSKEY, contacts);
+    }
+  }
 
   handleInputChange = evt => {
     this.setState({
